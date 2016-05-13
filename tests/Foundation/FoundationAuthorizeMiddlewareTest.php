@@ -77,7 +77,7 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
         });
 
         $this->router->get('users/create', [
-            'middleware' => [new SubstituteBindings($this->router), Authorize::class.':create,App\User'],
+            'middleware' => [SubstituteBindings::class, Authorize::class.':create,App\User'],
             'uses' => function () { return 'success'; },
         ]);
 
@@ -117,7 +117,7 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
         });
 
         $this->router->get('posts/{post}/edit', [
-            'middleware' => [new SubstituteBindings($this->router), Authorize::class.':edit,post'],
+            'middleware' => [SubstituteBindings::class, Authorize::class.':edit,post'],
             'uses' => function () { return 'success'; },
         ]);
 
