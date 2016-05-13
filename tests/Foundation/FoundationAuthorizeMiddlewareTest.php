@@ -30,6 +30,8 @@ class FoundationAuthorizeMiddlewareTest extends PHPUnit_Framework_TestCase
         });
 
         $this->router = new Router(new Dispatcher, $this->container);
+
+        $this->container->singleton(Illuminate\Contracts\Routing\Registrar::class, $this->router);
     }
 
     public function testSimpleAbilityUnauthorized()

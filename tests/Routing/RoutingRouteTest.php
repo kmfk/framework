@@ -923,7 +923,13 @@ class RoutingRouteTest extends PHPUnit_Framework_TestCase
 
     protected function getRouter()
     {
-        return new Router(new Illuminate\Events\Dispatcher);
+        $container = new Illuminate\Container\Container;
+
+        $router = new Router(new Illuminate\Events\Dispatcher, $container);
+
+        $container->singleton(Illuminate\Contracts\Routing\Registrar::class, $router);
+
+        return $router;
     }
 }
 
